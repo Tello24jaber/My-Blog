@@ -49,6 +49,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</body>
 </html> -->
 ---
+const pagetitle="Home Page";
 ---
 
 <html lang="en">
@@ -57,13 +58,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} >
-    <title>My Astro Site</title>
+    <title>{pagetitle}</title>
   </head>
   <body>
 	<a href="/">Home</a>
 <a href="/about/">About</a>
 <a href="/blog/">blog</a>
-    <h1>My Astro Site</h1>
+    <h1>{pagetitle}</h1>
 	
  
   </body>

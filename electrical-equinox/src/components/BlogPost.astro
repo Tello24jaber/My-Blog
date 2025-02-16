@@ -1,0 +1,14 @@
+<!-- ---
+const{title ,url}=Astro.props
+---
+<li><a href={url}>{title}</a></li> -->
+---
+const { title, url, date } = Astro.props;
+---
+
+<li class="blog-card">
+  <a href={url} class="blog-link">
+    <h2 class="blog-title">{title}</h2>
+    {date && <p class="blog-date">{date}</p>}
+  </a>
+</li>

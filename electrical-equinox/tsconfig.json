@@ -1,8 +1,23 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
   "compilerOptions": {
-    "strictNullChecks": true
-  }
+    "strict": true,
+    "jsx": "preserve",
+    "jsxImportSource": "preact",
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ESNext",
+    "allowJs": true
+  },
+  "include": [
+    "src",
+    "astro-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.astro"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

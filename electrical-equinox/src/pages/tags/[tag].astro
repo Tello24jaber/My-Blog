@@ -1,0 +1,35 @@
+---
+import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPost from '../../components/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
+
+  const uniqueTags = [...new Set(allPosts.flatMap((post: any) => post.frontmatter.tags))];
+
+  return uniqueTags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: allPosts.map((post: any) => ({
+        ...post,
+        url: post.url || `/posts/${post.file.split('/').pop()?.replace('.md', '')}`,
+      })).filter((post) => post.frontmatter.tags.includes(tag)),
+    },
+  }));
+}
+tags: ["astro", "blogging", "learning in public"];
+const { tag, posts } = Astro.props;
+console.log(posts); // 🔍 Debug: Check if posts have URLs
+---
+
+<BaseLayout pageTitle={`Posts tagged: ${tag}`}>
+  <p>Posts tagged with <strong>{tag}</strong></p>
+  <ul>
+    {posts.map((post: any) => (
+      <BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate} />
+    ))}
+  </ul>
+</BaseLayout>

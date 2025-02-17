@@ -1,6 +1,7 @@
 ---
 import Tag from '../pages/tags/[tag].astro';
 import BaseLayout from './BaseLayout.astro';
+import '../styles/global.css';
 const { title, pubDate, author, image } = Astro.props.frontmatter;
 const date = new Date(pubDate);  // Convert pubDate to a Date object
 const { frontmatter } = Astro.props;
